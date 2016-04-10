@@ -10,7 +10,12 @@
 
   <% if user_signed_in? %>
     <p>
-    Hello, <%= current_user.first_name %> - | - <%= link_to "Books", books_path %> - | - <a href="/users/<%= current_user.id %>">Profile</a> - | - <%= link_to "Sing Out", destroy_user_session_path,  :method  => 'delete'%>
+    Hello, <%= current_user.first_name %> - | - <%= link_to "Books", books_path %> - | - <a href="/users/<%= current_user.id %>">Profile</a> - | - <%= link_to "Edit Settings", edit_user_registration_path %> - | - <%= link_to "Sing Out", destroy_user_session_path,  :method  => 'delete'%>
+    </p>
+    <br>
+  <% else %>
+      <p>
+     <%= link_to "Books", books_path %> - | - <%= link_to "Sing In", new_user_session_path %>
     </p>
     <br>
   <% end %>
