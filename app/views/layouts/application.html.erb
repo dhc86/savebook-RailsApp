@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Savebook</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <% if user_signed_in? %>
+    <p>
+    Hello, <%= current_user.first_name %> - | - <%= link_to "Books", books_path %> - | - <a href="/users/<%= current_user.id %>">Profile</a> - | - <%= link_to "Sing Out", destroy_user_session_path,  :method  => 'delete'%>
+    </p>
+    <br>
+  <% end %>
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<%= yield %>
+
+</body>
+</html>
