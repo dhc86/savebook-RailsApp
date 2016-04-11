@@ -15,3 +15,39 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+/*  navbar  */
+
+body {
+  background: #e9eaed;
+}
+
+.navbar {
+  background: #44609D;
+  border-color: #44609D;
+}
+
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #FFF;
+}
+.dropdown span {
+  background: #23355B;
+}
+
+/*  navbar  */
+.small-containers {
+  background: white; 
+}
+
+/*  display users in books (home page)  */
+.user-tiny-info img{
+  
+}
+

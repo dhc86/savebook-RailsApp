@@ -1,56 +1,64 @@
 
+<div class="container general-container">
+  <div class="col-lg-12">
 
-<%= link_to 'New Book', new_book_path %>
-<h1>Listing Books</h1>
+    <div class="col-lg-2">
+      <p><img src=<%= current_user.picture_url %> alt="" height="20" width="20"> <a href="/users/<%= current_user.id %>"><%= current_user.first_name %> <%= current_user.last_name%></a></p>
+      <p><span class="glyphicon glyphicon-pencil"></span> <%= link_to "Settings", edit_user_registration_path %></p>
+      <h5>MORE USERS</h5>
+      <% @users.each do |user| %>
+        <div class="user-tiny-info">
+          <p>
+            <img src=<%= user.picture_url %> alt="" height="20" width="20">
+            <%= link_to user.first_name, user_path(user) %>
+          </p>
+        </div>
+      <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Isbn</th>
-      <th>Description</th>
-      <th>User ID creator</th>
-      <th>Image</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    </div>
+    <div class="col-lg-8">
 
-  <tbody>
-    <% @books.each do |book| %>
-      <tr>
-        <td><%= book.title %></td>
-        <td><%= book.author %></td>
-        <td><%= book.isbn %></td>
-        <td><%= book.description %></td>
-        <td><%= book.user_id %></td>
-        <td><img src=<%= book.picture_url %> alt=""></td>
+      <div class="media">
+        <% @books.each do |book| %>
 
-          <% if user_signed_in? == false %>
-            <td><%= link_to 'Show', book %></td>
-          <% end %>
-          <% if user_signed_in? %>
-            <% if current_user.id == book.user_id %>
-              <td><%= link_to 'Show', book %></td>
-              <td><%= link_to 'Edit', edit_book_path(book) %></td>
-              <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            <% else %>
-              <td><%= link_to 'Show', book %></td>
-            <% end %>
-          <% end %>
+          <div class="small-containers">
+
+            <div class="media-left media-top">
+              <a href="#">
+              <img class="media-object" src="..." alt="...">
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">Middle aligned media</h4>
+              <h3><%= book.title %></h3>
+              <h4>by: <%= book.author %></h4>
+              <p><%= book.description %></p>
+                <% if user_signed_in? == false %>
+                  <%= link_to 'Show', book %>
+                <% end %>
+            </div>
+              <% if user_signed_in? %>
+                <% if current_user.id == book.user_id %>
+                  <%= link_to 'Show', book %>
+                  <%= link_to 'Edit', edit_book_path(book) %>
+                  <%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <% else %>
+                  <%= link_to 'Show', book %>
+                <% end %>
+              <% end %>
+
+        
+          </div>
+        <br>
+        <% end %>
+      </div>
+    </div>
 
 
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
-<br>
 
-<% @users.each do |user| %>
-  <p><%= link_to user.first_name, user_path(user) %></p>
-
-<% end %>
 
 
 
