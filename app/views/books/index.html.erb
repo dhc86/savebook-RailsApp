@@ -16,7 +16,7 @@
       <% end %>
 
     </div>
-    <div class="col-lg-8">
+    <div class="col-lg-7">
 
       <div class="media">
         <% @books.each do |book| %>
@@ -34,16 +34,16 @@
               <h4>by: <%= book.author %></h4>
               <p><%= book.description %></p>
                 <% if user_signed_in? == false %>
-                  <%= link_to 'Show', book %>
+                  <button><%= link_to 'Show', book %></button> 
                 <% end %>
             </div>
               <% if user_signed_in? %>
                 <% if current_user.id == book.user_id %>
-                  <%= link_to 'Show', book %>
+                  <button>  <%= link_to 'Show', book %></button>
                   <%= link_to 'Edit', edit_book_path(book) %>
                   <%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %>
                 <% else %>
-                  <%= link_to 'Show', book %>
+                  <button class="btn facebook-style-button"><%= link_to 'Show', book %></button> 
                 <% end %>
               <% end %>
 
@@ -52,6 +52,12 @@
         <br>
         <% end %>
       </div>
+    </div>
+    <div class="col-lg-2 small-containers" >
+      <p>Music App</p>
+      <p>Movie App</p>
+      <p>Resume</p>
+      <p>Github</p>
     </div>
 
 

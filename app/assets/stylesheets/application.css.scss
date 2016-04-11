@@ -31,12 +31,18 @@ body {
   margin-right: auto;
   margin-left: auto;
   padding-left: 50px;
-  padding-right: 50px;
+  padding-right: 150px;
 }
 
 .navbar-default .navbar-nav > li > a {
     color: #FFF;
 }
+
+.navbar-nav > li > a {
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
 .dropdown span {
   background: #23355B;
 }
@@ -51,3 +57,17 @@ body {
   
 }
 
+/*  make buttons facebook style  */
+.facebook-style-button {
+  background-color: #4e69a2;
+  border-color: #435a8b #3c5488 #334c83;
+  color: white;
+  border-radius: 0px;
+}
+
+.navbar-form .form-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+    width: 400px;
+}
