@@ -9,6 +9,8 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.book_id = @book.id
     @review.user_id = current_user.id 
+    @review.user_name = current_user.first_name
+    @review.user_picture_url = current_user.picture_url
     if @review.save
       redirect_to book_path(@book)
     else

@@ -1,0 +1,7 @@
+<!-- @book -thanks to find book with params(:book_id)  and create review. possible by the associations -->
+<%= simple_form_for([@book, @book.reviews.build]) do |f| %>
+  <%= f.input :raiting %>  
+  <%= f.input :comment %>
+  <%= f.button :submit %>
+<% end %>
+
