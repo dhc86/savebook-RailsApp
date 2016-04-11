@@ -4,5 +4,12 @@
 <img src=<%= @user.picture_url %> alt="">
 
 <% @user_books.each do |book| %>
-  <p><%= link_to book.title, book_path(book) %></p>
+  <p>
+    <%= link_to book.title, book_path(book) %> --|--
+    <%= link_to 'Show', book %>
+    <% if current_user.id == book.user_id %>
+      <%= link_to 'Edit', edit_book_path(book) %>
+      <%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </p>
 <% end %>
