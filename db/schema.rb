@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160411013529) do
+ActiveRecord::Schema.define(version: 20160412195021) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
@@ -22,6 +22,27 @@ ActiveRecord::Schema.define(version: 20160411013529) do
     t.datetime "updated_at",                                             null: false
     t.integer  "user_id"
     t.string   "picture_url", default: "http://i.imgur.com/Ibd6JdC.jpg"
+  end
+
+  create_table "lends", force: :cascade do |t|
+    t.integer  "book_id"
+    t.integer  "user_id"
+    t.integer  "borrower_id"
+    t.date     "due"
+    t.date     "check_in"
+    t.date     "check_out"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer  "book_id"
+    t.integer  "owner_id"
+    t.integer  "borrower_id"
+    t.boolean  "accepted",    default: false
+    t.boolean  "attended_to", default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "reviews", force: :cascade do |t|

@@ -6,6 +6,7 @@ class BooksController < ApplicationController
   def index
     @books = Book.all.order("created_at DESC")
     @users = User.all
+    @requests = Request.all
   end
 
   # GET /books/1

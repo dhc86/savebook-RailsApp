@@ -24,8 +24,11 @@
         <%= link_to 'Edit', edit_book_path(@book) %> |
         <%= link_to 'Back', books_path %>
       <% else %>
-        <button>Borrow book</button>
+        <button>Borrow book do not use</button>
       <% end %>
+      
+    
+      <%= render './requests/form' %>      
 
       <%= render './reviews/form' %>
       <h3>Latest reviews:</h3>

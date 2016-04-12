@@ -20,10 +20,21 @@
         <h4>Basic Info</h4>
         <p>About:<%= @user.about%></p>
         <p>something</p>
+      </div>
+      <br>
+      <div class="user-info-and-updates small-containers">
         <h4>Latest Books Actions</h4>
-        <p>book 1 </p>
-        <p>book 2 </p>
-        <p>book 3 </p>
+        <h4>Requests Made:</h4>
+        <% @requests_made.each do |request|%>
+          <p> You have requested <a href="/books/<%= request.book_id %>"><b><%= Book.find(request.book_id).title %></b></a> from <a href="/users/<%= request.owner_id %>"><b><%= User.find(request.owner_id).first_name %> <%= User.find(request.owner_id).last_name %></a>'s list.</b></p>
+          <p>Status: Waiting for decision!</p>
+
+        <% end %>
+
+        <h4>Requests Recieved:</h4>
+        <% @requests_recieved.each do |request|%>
+          <p> <a href="/users/<%= request.borrower_id %>"> <b><%= User.find(request.borrower_id).first_name %> <%= User.find(request.borrower_id).last_name %></b></a> requested <a href="/books/<%= request.book_id %>"><b><%= Book.find(request.book_id).title %></b></a></p>
+        <% end %>
       </div>
       <br>
       <div class="user-books-images small-containers">
