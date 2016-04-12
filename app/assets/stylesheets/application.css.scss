@@ -35,21 +35,23 @@ body {
 }
 
 .navbar-default .navbar-nav > li > a {
-    color: #FFF;
+  color: #FFF;
 }
 
 .navbar-nav > li > a {
-    padding-top: 15px;
-    padding-bottom: 10px;
+  padding-top: 15px;
+  padding-bottom: 10px;
 }
 
 .dropdown span {
   background: #23355B;
 }
 
-/*  navbar  */
+/*  books page - give color to each div separately  */
 .small-containers {
   background: white; 
+  padding: 10px;
+  font-family: sans-serif;
 }
 
 /*  display users in books (home page)  */
@@ -65,9 +67,115 @@ body {
   border-radius: 0px;
 }
 
+.facebook-style-button a {
+  color: white;
+}
+
+.long-logo-navbar {
+  padding-top: 45px;
+  padding-left: 90px;
+}
+
 .navbar-form .form-control {
     display: inline-block;
     width: auto;
     vertical-align: middle;
     width: 400px;
 }
+
+input, button, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: black;
+}
+
+
+/*  profile pictures display  */
+.images-profile-container {
+  margin-top: -12px;
+}
+.profile-pic-container{
+  height: 45%;
+  width: 90%;
+  position: absolute !important;
+  top: 45% !important;
+  left: 7%;
+}
+.profile-pic-container img {
+  border: 4px solid #fff;
+  border-radius: 2px;
+}
+
+.profile-name {
+  position: absolute;
+  left: 20%;
+  top: 45%;
+  color: white;
+}
+
+
+/*  profile information display  */
+.information-profile-container {
+  margin-top: 50px;
+}
+
+.user-info-and-updates {
+  margin: 20px;
+}
+
+/*  sing-in form in landing page - if not signed_in  */
+.space-between-inputs {
+  margin-left: 5px;
+}
+
+input[type="button"], input[type="reset"], input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+    margin-top: 30%;
+    background: #627AAC;
+    color: white;
+    border-color: #627AAC;
+}
+
+.form-sing-in {
+  color: white;
+  padding-top: 15px;
+}
+
+.small-logo-navbar {
+  padding-top: 9px;
+}
+
+/*  sing-up container in landing page - if not signed_in  */
+.sing-up-page {
+ 
+}
+
+.sing-up-button {
+  margin-top: -30%;
+}
+
+.no-sing-in-navbar {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 0px;
+  border: 1px solid transparent;
+}
+
+.left-side-sign-up-page {
+  
+}
+
+
+.container-landing-page {
+  background-image: linear-gradient(white, #D3D8E8);
+}
+
+/* footer */
+.footer {
+  background: white;
+  height: 100px;
+}
+
+

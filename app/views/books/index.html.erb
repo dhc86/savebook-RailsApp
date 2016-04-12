@@ -20,16 +20,16 @@
 
       <div class="media">
         <% @books.each do |book| %>
-
+          
           <div class="small-containers">
 
             <div class="media-left media-top">
-              <a href="#">
-              <img class="media-object" src="..." alt="...">
+              <a href="/users/<%= @users.find(book.user_id).id %>">
+              <img class="media-object" src=<%= @users.find(book.user_id).picture_url %> alt="..." height="50" width="45">
               </a>
             </div>
             <div class="media-body">
-              <h4 class="media-heading">Middle aligned media</h4>
+              <h4 class="media-heading"><%= @users.find(book.user_id).first_name %> <%= @users.find(book.user_id).last_name %></h4>
               <h3><%= book.title %></h3>
               <h4>by: <%= book.author %></h4>
               <p><%= book.description %></p>
@@ -53,11 +53,34 @@
         <% end %>
       </div>
     </div>
-    <div class="col-lg-2 small-containers" >
-      <p>Music App</p>
-      <p>Movie App</p>
-      <p>Resume</p>
-      <p>Github</p>
+    <div class="col-lg-3">
+      <div class="small-containers">
+        <h5>MUSIC</h5>
+        <h4><a href="http://mymusic-dhc.herokuapp.com/"><img src="/assets/mymusic.png" alt="" height="25" width="25"> Mymusic App</a></h4>
+        <p>Application where users can store and view their favourites music, videos and instrument lessons.</p>
+      </div>
+      <br>
+      <div class="small-containers">
+        <h5>MOVIES</h5>  
+        <p><a href="https://trailix.herokuapp.com/"><img src="/assets/TRAILIX.png" alt="" height="20"></a></p>
+        <p>This app allows you to search, save and view your favourite trailer movies.</p>
+      </div>
+      <br>
+      <div class="small-containers">
+        <h5>E-COMMERCE</h5>  
+        <p><a href="https://www.soloshoppers.com/"><img src="/assets/soloshoppers.png" alt="" height="20"></a></p>
+        <p>Promote products and get commission. Make money Online!</p>
+      </div>
+      <br>
+      <div class="small-containers">
+        <h5>DEVELOPER</h5>
+        <p><a href="https://www.visualcv.com/0jngv7bpx7y?access=7j7V7H7FD46"><img src="/assets/visualcv.png" alt="" height="20"></a></p>
+        <p>DIego Herrera: Automation engineer with a passion for web application technologies. </p>
+      </div>
+      <div class="small-containers">
+        <h5><a href="https://github.com/dhc86"><img src="/assets/githublogo.jpg" alt="" height="25" width="25"> Github</a></h5>
+        <p>https://github.com/dhc86</p>
+      </div>
     </div>
 
 
