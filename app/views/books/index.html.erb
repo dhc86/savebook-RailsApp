@@ -9,8 +9,10 @@
       <% @users.each do |user| %>
         <div class="user-tiny-info">
           <p>
-            <img src=<%= user.picture_url %> alt="" height="20" width="20">
-            <%= link_to user.first_name, user_path(user) %>
+            <a href="/users/<%= user.id %>"  >
+              <img src=<%= user.picture_url %> alt="" height="20" width="20">
+              <%= user.first_name %>
+            </a>
           </p>
         </div>
       <% end %>
@@ -29,22 +31,22 @@
               </a>
             </div>
             <div class="media-body">
-              <h4 class="media-heading"><%= @users.find(book.user_id).first_name %> <%= @users.find(book.user_id).last_name %></h4>
+              <a href="/users/<%= @users.find(book.user_id).id %>"><h4 class="media-heading" style="color:#3b5998;"><b><%= @users.find(book.user_id).first_name %> <%= @users.find(book.user_id).last_name %></b></h4></a>
               <h3><%= book.title %></h3>
               <h4>by: <%= book.author %></h4>
-              <p><%= book.description %></p>
-                <% if user_signed_in? == false %>
-                  <button><%= link_to 'Show', book %></button> 
-                <% end %>
+              <p> <%= truncate(book.description , length: 300)%></p>
             </div>
+
               <% if user_signed_in? %>
-                <% if current_user.id == book.user_id %>
-                  <button>  <%= link_to 'Show', book %></button>
-                  <%= link_to 'Edit', edit_book_path(book) %>
-                  <%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %>
-                <% else %>
-                  <button class="btn facebook-style-button"><%= link_to 'Show', book %></button> 
-                <% end %>
+                <div class="buttons-commands-books-home">
+                  <% if current_user.id == book.user_id %>
+                    <button class="btn facebook-style-button">  <%= link_to 'Show', book %></button>
+                    <button class="btn facebook-style-button"><%= link_to 'Edit', edit_book_path(book) %></button>
+                    <button class="btn facebook-style-button"><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+                  <% else %>
+                    <button class="btn facebook-style-button buttons-commands-books-home-no-current-user"><%= link_to 'Show More', book %></button> 
+                  <% end %>
+                </div>
               <% end %>
 
         
@@ -56,29 +58,29 @@
     <div class="col-lg-3">
       <div class="small-containers">
         <h5>MUSIC</h5>
-        <h4><a href="http://mymusic-dhc.herokuapp.com/"><img src="/assets/mymusic.png" alt="" height="25" width="25"> Mymusic App</a></h4>
+        <a href="http://mymusic-dhc.herokuapp.com/"><h4><img src="/assets/mymusic.png" alt="" height="25" width="25"> Mymusic App</h4></a>
         <p>Application where users can store and view their favourites music, videos and instrument lessons.</p>
       </div>
       <br>
       <div class="small-containers">
         <h5>MOVIES</h5>  
-        <p><a href="https://trailix.herokuapp.com/"><img src="/assets/TRAILIX.png" alt="" height="20"></a></p>
+        <a href="https://trailix.herokuapp.com/"><p><img src="/assets/TRAILIX.png" alt="" height="20"></p></a>
         <p>This app allows you to search, save and view your favourite trailer movies.</p>
       </div>
       <br>
       <div class="small-containers">
         <h5>E-COMMERCE</h5>  
-        <p><a href="https://www.soloshoppers.com/"><img src="/assets/soloshoppers.png" alt="" height="20"></a></p>
+        <a href="https://www.soloshoppers.com/"><p><img src="/assets/soloshoppers.png" alt="" height="20"></p></a>
         <p>Promote products and get commission. Make money Online!</p>
       </div>
       <br>
       <div class="small-containers">
         <h5>DEVELOPER</h5>
-        <p><a href="https://www.visualcv.com/0jngv7bpx7y?access=7j7V7H7FD46"><img src="/assets/visualcv.png" alt="" height="20"></a></p>
+        <a href="https://www.visualcv.com/0jngv7bpx7y?access=7j7V7H7FD46"><p><img src="/assets/visualcv.png" alt="" height="20"></p></a>
         <p>DIego Herrera: Automation engineer with a passion for web application technologies. </p>
       </div>
       <div class="small-containers">
-        <h5><a href="https://github.com/dhc86"><img src="/assets/githublogo.jpg" alt="" height="25" width="25"> Github</a></h5>
+        <a href="https://github.com/dhc86"><h5><img src="/assets/githublogo.jpg" alt="" height="25" width="25"> Github</h5></a>
         <p>https://github.com/dhc86</p>
       </div>
     </div>

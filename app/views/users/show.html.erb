@@ -15,23 +15,29 @@
 
   <div class="col-lg-12 information-profile-container">
 
-    <div class="col-lg-3 user-info-and-updates small-containers">
-      <h4>Basic Info</h4>
-      <p>About:<%= @user.about%></p>
-      <p>something</p>
-      <h4>Latest Books Actions</h4>
-      <p>book 1 </p>
-      <p>book 2 </p>
-      <p>book 3 </p>
-
+    <div class="col-lg-4"> 
+      <div class="user-info-and-updates small-containers">
+        <h4>Basic Info</h4>
+        <p>About:<%= @user.about%></p>
+        <p>something</p>
+        <h4>Latest Books Actions</h4>
+        <p>book 1 </p>
+        <p>book 2 </p>
+        <p>book 3 </p>
+      </div>
+      <br>
+      <div class="user-books-images small-containers">
+        <h4>Books</h4>
+        <% @user_books.each do |book| %>
+          <a href="/books/<%= book.id %>"><img src=<%=  book.picture_url %> alt="" height="95" width="95"></a>
+        <% end %>
+      </div>
     </div>
     
 
     <div class="col-lg-8 user-books small-containers">
-  
-    
 
-    <div class="media">
+      <div class="media">
         <% @user_books.each do |book| %>
 
           <div class="small-containers">
@@ -42,24 +48,21 @@
               </a>
             </div>
             <div class="media-body">
-              <h3><%= book.title %></h3>
+              <a href="/books/<%= book.id %>"><h3 style="color:#3b5998;"><b> <%= book.title %></b></h3></a>
               <h4>by: <%= book.author %></h4>
-              <p><%= book.description %></p>
-                <% if user_signed_in? == false %>
-                  <button><%= link_to 'Show', book %></button> 
-                <% end %>
+              <p> <%= truncate(book.description , length: 300)%></p>                
             </div>
               <% if user_signed_in? %>
-                <% if current_user.id == book.user_id %>
-                  <button>  <%= link_to 'Show', book %></button>
-                  <%= link_to 'Edit', edit_book_path(book) %>
-                  <%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %>
-                <% else %>
-                  <button class="btn facebook-style-button"><%= link_to 'Show', book %></button> 
-                <% end %>
+                <div class="buttons-commands-books">
+                  <% if current_user.id == book.user_id %>
+                    <button class="btn facebook-style-button"><%= link_to 'Show', book %></button>
+                    <button class="btn facebook-style-button"><%= link_to 'Edit', edit_book_path(book) %></button>
+                    <button class="btn facebook-style-button"><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+                  <% else %>
+                    <button class="btn facebook-style-button buttons-commands-books-no-current-user"><%= link_to 'Show More', book %></button> 
+                  <% end %>
+                </div>
               <% end %>
-
-        
           </div>
         <br>
         <% end %>

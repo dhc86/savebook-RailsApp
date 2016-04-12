@@ -95,6 +95,7 @@ input, button, select, textarea {
 .images-profile-container {
   margin-top: -12px;
 }
+
 .profile-pic-container{
   height: 45%;
   width: 90%;
@@ -102,6 +103,7 @@ input, button, select, textarea {
   top: 45% !important;
   left: 7%;
 }
+
 .profile-pic-container img {
   border: 4px solid #fff;
   border-radius: 2px;
@@ -120,9 +122,6 @@ input, button, select, textarea {
   margin-top: 50px;
 }
 
-.user-info-and-updates {
-  margin: 20px;
-}
 
 /*  sing-in form in landing page - if not signed_in  */
 .space-between-inputs {
@@ -148,9 +147,6 @@ input[type="button"], input[type="reset"], input[type="submit"] {
 }
 
 /*  sing-up container in landing page - if not signed_in  */
-.sing-up-page {
- 
-}
 
 .sing-up-button {
   margin-top: -30%;
@@ -163,10 +159,6 @@ input[type="button"], input[type="reset"], input[type="submit"] {
   border: 1px solid transparent;
 }
 
-.left-side-sign-up-page {
-  
-}
-
 
 .container-landing-page {
   background-image: linear-gradient(white, #D3D8E8);
@@ -176,6 +168,31 @@ input[type="button"], input[type="reset"], input[type="submit"] {
 .footer {
   background: white;
   height: 100px;
+}
+
+/*  buttons for restful (edit-delete-view) for each book  */
+.buttons-commands-books {
+  margin-left: 434px;
+}
+
+.buttons-commands-books-home {
+  margin-left: 400px;
+}
+
+.buttons-commands-books-no-current-user {
+  margin-left: 110px;
+}
+
+.buttons-commands-books-home-no-current-user {
+  margin-left: 70px;
+}
+
+.user-books-images {
+  background: white;  
+}
+
+.user-books-images a{
+  margin: 4px;
 }
 
 
