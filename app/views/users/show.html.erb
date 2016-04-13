@@ -17,7 +17,7 @@
       <div class="user-info-and-updates small-containers">
         <h4>Basic Info</h4>
         <p>About:<%= @user.about%></p>
-        <p>something</p>
+        <p>Number of books: <%= @user_books.count %></p>
       </div>
       <br>
       <div class="user-info-and-updates small-containers">
@@ -60,7 +60,7 @@
       <div class="user-books-images small-containers">
         <h4>Books</h4>
         <% @user_books.each do |book| %>
-          <a href="/books/<%= book.id %>"><img src=<%=  book.picture_url %> alt="" height="95" width="95"></a>
+          <a href="/books/<%= book.id %>"><img src=<%=  book.picture_url %> alt="" height="110" width="103"></a>
         <% end %>
       </div>
     </div>

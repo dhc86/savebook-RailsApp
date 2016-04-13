@@ -36,6 +36,10 @@ body a:hover {
   border-color: #44609D;
 }
 
+.navbar-right {
+  font-family: sans-serif, arial, helvetica, verdana,;      
+  font-size: 13px;
+}
 
 .container-fluid {
   margin-right: auto;
@@ -203,11 +207,15 @@ input[type="button"], input[type="reset"], input[type="submit"] {
 
 .user-books-images {
   background: white;  
+
 }
 
-.user-books-images a{
-  margin: 4px;
+.user-books-images img {
+  
+  margin-top: 5px;
 }
 
-
-
+/* fix button from reuquests and lends */
+.user-info-and-updates .btn {
+  margin-top: 0px;
+}
