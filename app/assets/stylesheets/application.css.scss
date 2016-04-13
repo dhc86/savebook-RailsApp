@@ -18,14 +18,24 @@
 
 /*  navbar  */
 
+/*  give color to reuqest names and titles inprofile pages  */
+.information-profile-container a {
+  color: #3b5998;
+}
+
 body {
   background: #e9eaed;
+}
+
+body a:hover {
+  background:none;
 }
 
 .navbar {
   background: #44609D;
   border-color: #44609D;
 }
+
 
 .container-fluid {
   margin-right: auto;
@@ -52,12 +62,13 @@ body {
   background: white; 
   padding: 10px;
   font-family: sans-serif;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #DFE0E4;
 }
 
 /*  display users in books (home page)  */
-.user-tiny-info img{
-  
-}
+
 
 /*  make buttons facebook style  */
 .facebook-style-button {
@@ -177,14 +188,17 @@ input[type="button"], input[type="reset"], input[type="submit"] {
 
 .buttons-commands-books-home {
   margin-left: 400px;
+  color:white;
 }
 
 .buttons-commands-books-no-current-user {
   margin-left: 110px;
+  color:white;
 }
 
 .buttons-commands-books-home-no-current-user {
   margin-left: 70px;
+  color:white;
 }
 
 .user-books-images {
@@ -195,7 +209,5 @@ input[type="button"], input[type="reset"], input[type="submit"] {
   margin: 4px;
 }
 
-.information-profile-container a {
-  color: #3b5998;
-}
+
 

@@ -19,13 +19,13 @@
         <%= @book.description %>
       </p>
 
-     
+       
       <% if current_user.id == @book.user_id %>
         <%= link_to 'Edit', edit_book_path(@book) %> |
         <%= link_to 'Back', books_path %>
-      <% else %>
-        <button>Borrow book do not use</button>
       <% end %>
+      
+      <iframe id = "map" style="height: 400px; width: 600px" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyCVt89sOKkehU7JDQpPncShX80rzGE6kj4&origin=<%= current_user.address %>&destination= <%= @book.user.address %> &avoid=tolls|highways"></iframe>
       
     
       <%= render './requests/form' %>      
@@ -33,6 +33,7 @@
       <%= render './reviews/form' %>
       <h3>Latest reviews:</h3>
       <%= render @book.reviews %>
+
     </div>
 
   </div>

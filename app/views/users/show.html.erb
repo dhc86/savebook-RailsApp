@@ -1,5 +1,3 @@
-
-
 <div class="container">
   <div class="images-profile-container">
     <img src="/assets/image_profile.jpg" alt="" height="410" width="100%">
@@ -26,14 +24,36 @@
         <h4>Latest Books Actions</h4>
         <h4>Requests Made:</h4>
         <% @requests_made.each do |request|%>
-          <p> You have requested <a href="/books/<%= request.book_id %>"><b><%= Book.find(request.book_id).title %></b></a> from <a href="/users/<%= request.owner_id %>"><b><%= User.find(request.owner_id).first_name %> <%= User.find(request.owner_id).last_name %></a>'s list.</b></p>
-          <p>Status: Waiting for decision!</p>
+
+          <% if request.attended_to == false %>
+            <p> You have requested <a href="/books/<%= request.book_id %>"><b><%= Book.find(request.book_id).title %></b></a> from <a href="/users/<%= request.owner_id %>"><b><%= User.find(request.owner_id).first_name %> <%= User.find(request.owner_id).last_name %></a></b>'s list.</p>
+            <p>Status: Waiting for decision!</p>
+          <% end %>
+
+          <% if request.attended_to == true && request.accepted == true %>
+            <p>Congrats! </p>
+            <p> Your requested book <a href="/books/<%= request.book_id %>"><b><%= Book.find(request.book_id).title %></b></a> has been apporved.To be returned in 7 days</p>
+          <% end %>
+
+          <% if request.attended_to == true && request.accepted == false %>
+            <p> Your requested book <a href="/books/<%= request.book_id %>"><b><%= Book.find(request.book_id).title %></b></a> has been denied. Try again to see if the owner changes his/her mind.</p>
+          <% end %>
 
         <% end %>
 
         <h4>Requests Recieved:</h4>
         <% @requests_recieved.each do |request|%>
-          <p> <a href="/users/<%= request.borrower_id %>"> <b><%= User.find(request.borrower_id).first_name %> <%= User.find(request.borrower_id).last_name %></b></a> requested <a href="/books/<%= request.book_id %>"><b><%= Book.find(request.book_id).title %></b></a></p>
+
+          <% if request.attended_to == false %>
+            <p><a href="/users/<%= request.borrower_id %>"> <b><%= User.find(request.borrower_id).first_name %> <%= User.find(request.borrower_id).last_name %></b></a> requested <a href="/books/<%= request.book_id %>"><b><%= Book.find(request.book_id).title %></b></a></p>
+            <% if current_user.id == @user.id %>
+              <% @book = Book.find(request.book_id) %>
+
+              <%= simple_form_for([@book, @book.lends.build]) do |f| %>  
+                <%= f.button :submit %>              
+              <% end %>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
       <br>
@@ -46,7 +66,7 @@
     </div>
     
 
-    <div class="col-lg-8 user-books small-containers">
+    <div class="col-lg-8 user-books">
 
       <div class="media">
         <% @user_books.each do |book| %>
