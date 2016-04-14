@@ -116,7 +116,7 @@ input, button, select, textarea {
   width: 90%;
   position: absolute !important;
   top: 45% !important;
-  left: 7%;
+  left: 10%;
 }
 
 .profile-pic-container img {
@@ -238,6 +238,8 @@ input[type="button"], input[type="reset"], input[type="submit"] {
     border-top-left-radius: 2px;
 }
 
+
+/* modal show page book */
 .modal-content {
   width: 160%;
   margin-left: -185px;
@@ -246,9 +248,9 @@ input[type="button"], input[type="reset"], input[type="submit"] {
 }
 
 .modal-body {
-    position: relative;
-    padding: 15px;
-    height: 550px;
+  position: relative;
+  padding: 15px;
+  height: 550px;
 }
 .modal-display-info {
   height: 535px;
@@ -261,4 +263,8 @@ input[type="button"], input[type="reset"], input[type="submit"] {
 
 .picture-profile-modal img {
   margin-left: -15px;
+}
+
+.wall-picture-container {
+  margin-left: 32px;
 }
