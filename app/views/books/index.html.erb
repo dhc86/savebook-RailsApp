@@ -50,6 +50,13 @@
               <div class="col-lg-7">
                 <h4>Book Author: <%= book.author %></h4>
                 <p> <%= truncate(book.description , length: 200)%></p>
+                
+                <% if Request.where(book_id: book.id)[0] == nil %>
+                  <p>Status: Available!</p>
+                <% else %>
+                  <p>Status:Not Available</p>
+                <% end %>
+
               </div>
             </div>
             

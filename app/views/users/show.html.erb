@@ -3,7 +3,7 @@
     <img src="/assets/image_profile.jpg" alt="" height="410" width="100%">
     <div class="profile-pic-container">
       <p>
-        <img src=<%= @user.picture_url %> alt="" height="220" width="210">
+        <img src=<%= @user.picture_url %> alt="" height="220" width="210" data-toggle="modal" data-target="#myModal">
         <div class="profile-name">
           <h2><%= @user.first_name %> <%= @user.last_name %></h2>
         </div>
@@ -14,12 +14,52 @@
   <div class="col-lg-12 information-profile-container">
 
     <div class="col-lg-4"> 
-      <div class="user-info-and-updates small-containers">
-        <h4>Basic Info</h4>
-        <p>About:<%= @user.about%></p>
-        <p>Number of books: <%= @user_books.count %></p>
+      <div class="user-info-and-updates ">
+        <ul class="list-group">
+          <li class="list-group-item title-basic-info-profile">Basic Info</li>
+          <li class="list-group-item ">
+            <p>About:<%= @user.about%></p>
+            <p>Number of books: <%= @user_books.count %></p>
+          </li>  
+        </ul>
+
+
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="col-lg-12">
+          <div class="col-lg-7 picture-profile-modal">
+            <img src=<%= @user.picture_url %> alt="" height="535" width="490">
+          </div>
+          <div class="col-lg-4 modal-display-info"  style="background: white;">
+            <h3><%= @user.first_name %> <%= @user.last_name %> </h3>
+            <p>About:<%= @user.about%></p>
+            <p>Number of books: <%= @user_books.count %></p>
+
+            <div class="user-books-images small-containers">
+              <h4>Books</h4>
+              <% @user_books.each do |book| %>
+                  <a href="/books/<%= book.id %>"><img src=<%=  book.picture_url %> alt="" height="110" width="103"></a>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
-      <br>
+    </div>
+
+  </div>
+</div>
+
+
+
+      </div>
+      
       <div class="user-info-and-updates small-containers">
         <h4>Latest Books Actions</h4>
         <h4>Requests Made:</h4>
