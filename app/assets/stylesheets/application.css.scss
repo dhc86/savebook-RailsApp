@@ -219,3 +219,15 @@ input[type="button"], input[type="reset"], input[type="submit"] {
 .user-info-and-updates .btn {
   margin-top: 0px;
 }
+
+/* show page book */
+.reviews-container input[type="reset"], input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+    margin-top: 0%;
+    background: #627AAC;
+    color: white;
+    border-color: #627AAC;
+}
+
+
