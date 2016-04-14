@@ -1,7 +1,31 @@
 <div class="container">
-  <h1>New Book</h1>
+  <div class="col-lg-12">
+    <h1>New Book</h1>
 
-  <%= render 'form' %>
-
-  <%= link_to 'Back', books_path %>
+    <div class="col-lg-4 small-containers">
+      <h3>Enter ISBN for automatic book information search!</h3>
+      <div class="find-book-by-isbn">
+        <form>
+          <fieldset class="form-group">
+            <!-- <label for="formGroupExampleInput">Example label</label> -->
+            <input type="text" class="form-control" id="isbn-entered" placeholder="Enter isbn number here!">
+          </fieldset>
+          <button type="submit" class="btn btn-primary find-isbn-button">Find Book</button>
+        </form>
+      </div>
+      <br>
+      <div class="embed-responsive embed-responsive-16by9">
+        <video loop="loop" width="445" height="290" autoplay>
+          <source src="/assets/Typewriter.mp4" type="video/mp4">
+          <source src="/assets/Typewriter.ogg" type="video/ogg">
+          Your browser does not support the video tag.
+        </video>   
+      </div>
+    </div>
+    
+    <div class="col-lg-8">
+      <%= render 'form' %>
+      <%= link_to 'Back', books_path %>
+    </div>
+  </div>  
 </div>

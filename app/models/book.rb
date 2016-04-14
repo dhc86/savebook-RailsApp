@@ -8,4 +8,5 @@ class Book < ActiveRecord::Base
   validates :author, presence: true
   validates :isbn, presence: true
   validates :description, presence: true
+  validates :picture_url, presence: true
 end
