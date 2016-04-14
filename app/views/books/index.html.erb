@@ -30,13 +30,29 @@
               <img class="media-object" src=<%= @users.find(book.user_id).picture_url %> alt="..." height="50" width="45">
               </a>
             </div>
-            <div class="media-body">
-              <a href="/users/<%= @users.find(book.user_id).id %>"><h4 class="media-heading" style="color:#3b5998;"><b><%= @users.find(book.user_id).first_name %> <%= @users.find(book.user_id).last_name %></b></h4></a>
-              <h3><%= book.title %></h3>
-              <h4>by: <%= book.author %></h4>
-              <p> <%= truncate(book.description , length: 300)%></p>
-            </div>
+            <div class="media-body small-containers">
 
+                <h4 class="media-heading">
+              <a href="/users/<%= @users.find(book.user_id).id %>" style=" font-size: 18px; font-family: inherit; color: #3b5998;     font-weight: bold;">
+
+                <b><%= @users.find(book.user_id).first_name %> <%= @users.find(book.user_id).last_name %></b>
+              </a>
+               <span style=" font-size: 14px; font-family: inherit; color: black;     font-weight: bold;">posted</span>
+              <a href="/books/<%= book.id %>" style=" font-size: 18px; font-family: inherit; color: #3b5998;     font-weight: bold;">
+                <b><%= book.title %></b>
+              </a>
+                </h4>
+
+              <div class="col-lg-3 small-containers">
+
+                <a href='/books/<%= book.id %>'><img src=<%= book.picture_url %> alt="" height="150" width="108"></a>
+              </div>
+              <div class="col-lg-7">
+                <h4>Book Author: <%= book.author %></h4>
+                <p> <%= truncate(book.description , length: 200)%></p>
+              </div>
+            </div>
+            
               <% if user_signed_in? %>
                 <div class="buttons-commands-books-home">
                   <% if current_user.id == book.user_id %>

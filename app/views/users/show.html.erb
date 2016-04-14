@@ -78,9 +78,11 @@
               </a>
             </div>
             <div class="media-body">
-              <a href="/books/<%= book.id %>"><h3 style="color:#3b5998;"><b> <%= book.title %></b></h3></a>
-              <h4>by: <%= book.author %></h4>
-              <p> <%= truncate(book.description , length: 300)%></p>                
+              <div class="small-containers">
+                <a href="/books/<%= book.id %>"><h3 style="color:#3b5998;"><b> <%= book.title %></b></h3></a>
+                <h4>by: <%= book.author %></h4>
+                <p> <%= truncate(book.description , length: 300)%></p>                
+              </div>
             </div>
               <% if user_signed_in? %>
                 <div class="buttons-commands-books">
