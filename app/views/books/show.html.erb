@@ -2,7 +2,7 @@
 
 <div class="container">
     
-      <h4><img src=<%= @users.find(@book.user_id).picture_url %> alt="" height="50" width="45">This Book belongs to <a href="/users/<%= @users.find(@book.user_id).id %>" style="color: #3b5998;"><b><%= @users.find(@book.user_id).first_name %> <%= @users.find(@book.user_id).last_name %></b></a></h4>
+      <h4><img src=<%= @users.find(@book.user_id).picture_url %> alt="" height="50" width="45"> <a href="/users/<%= @users.find(@book.user_id).id %>" style="color: #3b5998;"><b><%= @users.find(@book.user_id).first_name %> <%= @users.find(@book.user_id).last_name %></b></a> owns this book</h4>
     
   <div class="col-lg-12 small-containers">
     <div class="col-lg-3 small-containers">
