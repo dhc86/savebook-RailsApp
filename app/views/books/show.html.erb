@@ -36,9 +36,36 @@
     <div class="col-lg-4 small-containers">
     
       <div class="reviews-container small-containers">
+        <h3>Book Status:</h3>
+        
+        <!-- This displays book status and like button -->
+        <% if Request.where(book_id: @book.id)[0] == nil %>
+          <p>Status: <span style="color: green;">Available</span>
 
-        <h3>Interested? Make a Request!</h3>
-        <%= render './requests/form' %>
+          <div class="like-button">
+              <p><img src="/assets/like.png" alt="" height="20" width="20"> <%= Like.where(book_id: @book.id).count %></p>
+          </div>
+          <% if current_user.id != @book.user_id %>
+            <h3>Interested? Make a Request!</h3>
+            <%= render './requests/form' %>
+          <% end %>
+        
+        <% elsif (Request.where(book_id: @book.id)[0].accepted == true) %>
+          <p>Status: <span style="color: red;">Not Available</span>, lent to <a href="/users/<%= User.where(id: Request.where(book_id: @book.id)[0].borrower_id)[0].id %>"><b style="color: #3b5998;"> <%= User.where(id: Request.where(book_id: @book.id)[0].borrower_id)[0].first_name %> <%= User.where(id: Request.where(book_id: @book.id)[0].borrower_id)[0].last_name %></b>.</a>
+          </p>
+          <div class="like-button">
+            <p><img src="/assets/like.png" alt="" height="20" width="20"> <%= Like.where(book_id: @book.id).count %></p>
+          </div>
+        <% elsif (Request.where(book_id: @book.id)[0] != nil) || (Request.where(book_id: @book.id)[0].accepted != false) %>
+          <p>Status: <span style="color: #DAA520;">Pending a lend request</span> to 
+            <a href="/users/<%= User.where(id: Request.where(book_id: @book.id)[0].borrower_id)[0].id %>"><b style="color: #3b5998;"><%= User.where(id: Request.where(book_id: @book.id)[0].borrower_id)[0].first_name %> <%= User.where(id: Request.where(book_id: @book.id)[0].borrower_id)[0].last_name %></b></a>'s request.</p>
+          <div class="like-button">
+            <p><img src="/assets/like.png" alt="" height="20" width="20"> <%= Like.where(book_id: @book.id).count %></p>
+          </div>
+          <% else %>
+          <p>NO info to diplay, something is wrong, please check!</p>
+        <% end %>
+        <!-- END - This displays book status and like button -->
         <br>
         <h3>Have read the book? Let people know your opinion.</h3>
         <%= render './reviews/form' %>

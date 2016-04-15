@@ -59,17 +59,15 @@
         <% @requests_made.each do |request|%>
 
           <% if request.attended_to == false %>
-            <p> You have requested <a href="/books/<%= request.book_id %>"><b><%= Book.find(request.book_id).title %></b></a> from <a href="/users/<%= request.owner_id %>"><b><%= User.find(request.owner_id).first_name %> <%= User.find(request.owner_id).last_name %></a></b>'s list.</p>
-            <p>Status: Waiting for decision!</p>
+            <p><span style="color: #DAA520"> Waiting for decision!</span> You have requested <a href="/books/<%= request.book_id %>"><b><%= Book.find(request.book_id).title %></b></a> from <a href="/users/<%= request.owner_id %>"><b><%= User.find(request.owner_id).first_name %> <%= User.find(request.owner_id).last_name %></a></b>'s list.</p>
           <% end %>
 
           <% if request.attended_to == true && request.accepted == true %>
-            <p>Congrats! </p>
-            <p> Your requested book <a href="/books/<%= request.book_id %>"><b><%= Book.find(request.book_id).title %></b></a> has been apporved.To be returned in 7 days</p>
+            <p><span style="color: green">Congrats!</span> Your requested book <a href="/books/<%= request.book_id %>"><b><%= Book.find(request.book_id).title %></b></a> has been apporved.To be returned in 7 days</p>
           <% end %>
 
           <% if request.attended_to == true && request.accepted == false %>
-            <p> Your requested book <a href="/books/<%= request.book_id %>"><b><%= Book.find(request.book_id).title %></b></a> has been denied. Try again to see if the owner changes his/her mind.</p>
+            <p> Your requested book <a href="/books/<%= request.book_id %>"><b><%= Book.find(request.book_id).title %></b></a> has been <span style="color: red">denied</span>. Try again to see if the owner changes his/her mind.</p>
           <% end %>
 
         <% end %>
@@ -114,7 +112,42 @@
               <div class="small-containers">
                 <a href="/books/<%= book.id %>"><h3 style="color:#3b5998;"><b> <%= book.title %></b></h3></a>
                 <h4>by: <%= book.author %></h4>
-                <p> <%= truncate(book.description , length: 300)%></p>                
+                <p> <%= truncate(book.description , length: 300)%></p>        
+  
+                <!-- This displays book status and like button -->
+                <% if Request.where(book_id: book.id)[0] == nil %>
+                  <p>Status: <span style="color: green;">Available</span>
+                  
+                 <div class="like-button">
+                  <%= simple_form_for([book, book.likes.build]) do |f| %>
+                    <%= Like.where(book_id: book.id).count %>
+                    <input type="image" class="like-button" name="commit" src="/assets/like.png" alt="Submit Form" height="15" width="15"/>         
+                  <% end %>
+                </div>
+                
+                <% elsif (Request.where(book_id: book.id)[0].accepted == true) %>
+                  <p>Status: <span style="color: red;">Not Available</span>, lent to <a href="/users/<%= User.where(id: Request.where(book_id: book.id)[0].borrower_id)[0].id %>"><b style="color: #3b5998;"> <%= User.where(id: Request.where(book_id: book.id)[0].borrower_id)[0].first_name %> <%= User.where(id: Request.where(book_id: book.id)[0].borrower_id)[0].last_name %></b>.</a>
+                  </p>
+                  <div class="like-button">
+                  <%= simple_form_for([book, book.likes.build]) do |f| %>
+                    <%= Like.where(book_id: book.id).count %>
+                    <input type="image" class="like-button" name="commit" src="/assets/like.png" alt="Submit Form" height="15" width="15"/>         
+                  <% end %>
+                </div>
+                <% elsif (Request.where(book_id: book.id)[0] != nil) || (Request.where(book_id: book.id)[0].accepted != false) %>
+                  <p>Status: <span style="color: #DAA520;">Pending a lend request</span> to 
+                    <a href="/users/<%= User.where(id: Request.where(book_id: book.id)[0].borrower_id)[0].id %>"><b style="color: #3b5998;"><%= User.where(id: Request.where(book_id: book.id)[0].borrower_id)[0].first_name %> <%= User.where(id: Request.where(book_id: book.id)[0].borrower_id)[0].last_name %></b></a></p>
+                  <div class="like-button">
+                  <%= simple_form_for([book, book.likes.build]) do |f| %>
+                    <%= Like.where(book_id: book.id).count %>
+                    <input type="image" class="like-button" name="commit" src="/assets/like.png" alt="Submit Form" height="15" width="15"/>         
+                  <% end %>
+                </div>
+                  <% else %>
+                  <p>NO info to diplay, something is wrong, please check!</p>
+                <% end %>
+                <!-- END - This displays book status and like button -->
+                
               </div>
             </div>
               <% if user_signed_in? %>

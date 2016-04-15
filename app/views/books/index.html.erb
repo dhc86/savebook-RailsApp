@@ -32,50 +32,59 @@
             </div>
             <div class="media-body small-containers">
 
-                <h4 class="media-heading">
-              <a href="/users/<%= @users.find(book.user_id).id %>" style=" font-size: 18px; font-family: inherit; color: #3b5998;     font-weight: bold;">
+            <h4 class="media-heading">
+              <a href="/users/<%= @users.find(book.user_id).id %>" style=" font-size: 18px; font-family: inherit; color: #3b5998; font-weight: bold;">
 
                 <b><%= @users.find(book.user_id).first_name %> <%= @users.find(book.user_id).last_name %></b>
               </a>
                <span style=" font-size: 14px; font-family: inherit; color: black;     font-weight: bold;">posted</span>
-              <a href="/books/<%= book.id %>" style=" font-size: 18px; font-family: inherit; color: #3b5998;     font-weight: bold;">
+              <a href="/books/<%= book.id %>" style=" font-size: 18px; font-family: inherit; color: #3b5998; font-weight: bold;">
                 <b><%= book.title %></b>
               </a>
-                </h4>
+            </h4>
 
-              <div class="col-lg-3 small-containers">
-
-                <a href='/books/<%= book.id %>'><img src=<%= book.picture_url %> alt="" height="150" width="108"></a>
-              </div>
-              <div class="col-lg-7">
-                <h4>Book Author: <%= book.author %></h4>
-                <p> <%= truncate(book.description , length: 200)%></p>
-                
-                <% if Request.where(book_id: book.id)[0] == nil %>
-                  <p>Status: Available!</p>
-                  <div class="like-button">
-                    <%= simple_form_for([book, book.likes.build]) do |f| %>
-                      <%= Like.where(book_id: book.id).count %>
-                      <input type="image" class="like-button" name="commit" src="/assets/like.png" alt="Submit Form" height="15" width="15"/>         
-                    <% end %>
-              
-                  </div>
-
-                <% else %>
-                  <p>Status:Not Available</p>
-                  <div class="like-button">
-                    <%= simple_form_for([book, book.likes.build]) do |f| %>
-                      <%= Like.where(book_id: book.id).count %>
-                      <input type="image" class="like-button" name="commit" src="/assets/like.png" alt="Submit Form" height="15" width="15"/>         
-                    <% end %>
-              
-                  </div>
-                <% end %>
-                
-               
-
-              </div>
+            <div class="col-lg-3 small-containers">
+              <a href='/books/<%= book.id %>'><img src=<%= book.picture_url %> alt="" height="150" width="108"></a>
             </div>
+            <div class="col-lg-7">
+              <h4>Book Author: <%= book.author %></h4>
+              <p> <%= truncate(book.description , length: 200)%></p>
+
+              <!-- END - This displays book status and like button -->
+              <% if Request.where(book_id: book.id)[0] == nil %>
+                <p>Status: <span style="color: green;">Available</span>
+                
+               <div class="like-button">
+                <%= simple_form_for([book, book.likes.build]) do |f| %>
+                  <%= Like.where(book_id: book.id).count %>
+                  <input type="image" class="like-button" name="commit" src="/assets/like.png" alt="Submit Form" height="15" width="15"/>         
+                <% end %>
+              </div>
+              
+              <% elsif (Request.where(book_id: book.id)[0].accepted == true) %>
+                <p>Status: <span style="color: red;">Not Available</span>, lent to <a href="/users/<%= User.where(id: Request.where(book_id: book.id)[0].borrower_id)[0].id %>"><b style="color: #3b5998;"> <%= User.where(id: Request.where(book_id: book.id)[0].borrower_id)[0].first_name %> <%= User.where(id: Request.where(book_id: book.id)[0].borrower_id)[0].last_name %></b>.</a>
+                </p>
+                <div class="like-button">
+                <%= simple_form_for([book, book.likes.build]) do |f| %>
+                  <%= Like.where(book_id: book.id).count %>
+                  <input type="image" class="like-button" name="commit" src="/assets/like.png" alt="Submit Form" height="15" width="15"/>         
+                <% end %>
+              </div>
+              <% elsif (Request.where(book_id: book.id)[0] != nil) || (Request.where(book_id: book.id)[0].accepted != false) %>
+                <p>Status: <span style="color: #DAA520;">Pending a lend request</span> to 
+                  <a href="/users/<%= User.where(id: Request.where(book_id: book.id)[0].borrower_id)[0].id %>"><b style="color: #3b5998;"><%= User.where(id: Request.where(book_id: book.id)[0].borrower_id)[0].first_name %> <%= User.where(id: Request.where(book_id: book.id)[0].borrower_id)[0].last_name %></b></a></p>
+                <div class="like-button">
+                <%= simple_form_for([book, book.likes.build]) do |f| %>
+                  <%= Like.where(book_id: book.id).count %>
+                  <input type="image" class="like-button" name="commit" src="/assets/like.png" alt="Submit Form" height="15" width="15"/>         
+                <% end %>
+              </div>
+                <% else %>
+                <p>NO info to diplay, something is wrong, please check!</p>
+              <% end %>
+              <!-- END - This displays book status and like button -->
+            </div>
+          </div>
             
               <% if user_signed_in? %>
                 <div class="buttons-commands-books-home">

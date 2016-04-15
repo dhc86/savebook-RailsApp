@@ -21,8 +21,12 @@
 
 $( document ).ready(function() {
 
+  // $('.like-button').on('click', function(event){
+  //   event.preventDefault();
+  // });
 
- 
+
+// This will make ajax reuest to google books api to get books information!
   $('.find-isbn-button').on('click', function(event){
     event.preventDefault();
 
@@ -61,10 +65,6 @@ $( document ).ready(function() {
         }
       });      
     }
-
-
-
-
 
   });
  
