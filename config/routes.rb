@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :reviews
     resources :requests
     resources :lends
-
+    resources :likes
   end 
   resources :users
   # root 'books#index'

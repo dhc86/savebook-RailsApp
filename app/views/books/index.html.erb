@@ -53,9 +53,26 @@
                 
                 <% if Request.where(book_id: book.id)[0] == nil %>
                   <p>Status: Available!</p>
+                  <div class="like-button">
+                    <%= simple_form_for([book, book.likes.build]) do |f| %>
+                      <%= Like.where(book_id: book.id).count %>
+                      <input type="image" class="like-button" name="commit" src="/assets/like.png" alt="Submit Form" height="15" width="15"/>         
+                    <% end %>
+              
+                  </div>
+
                 <% else %>
                   <p>Status:Not Available</p>
+                  <div class="like-button">
+                    <%= simple_form_for([book, book.likes.build]) do |f| %>
+                      <%= Like.where(book_id: book.id).count %>
+                      <input type="image" class="like-button" name="commit" src="/assets/like.png" alt="Submit Form" height="15" width="15"/>         
+                    <% end %>
+              
+                  </div>
                 <% end %>
+                
+               
 
               </div>
             </div>

@@ -1,8 +1,9 @@
 class Book < ActiveRecord::Base
   belongs_to :user
-  has_many :reviews
-  has_many :requests
-  has_many :lends
+  has_many :reviews, dependent: :destroy
+  has_many :requests, dependent: :destroy
+  has_many :lends, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   validates :title, presence: true, length: { maximum: 500, message: 'is too long (maximum is 500 characters)' }
   validates :author, presence: true
