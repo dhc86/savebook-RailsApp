@@ -5,6 +5,9 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @books = Book.all.order("created_at DESC")
+    if params[:search]
+      @books = @books.where(['title LIKE ?', "%#{params[:search]}%"])
+    end
     @users = User.all
     @requests = Request.all
   end

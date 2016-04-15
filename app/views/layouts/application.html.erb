@@ -19,14 +19,15 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-        <form class="navbar-form navbar-left" role="search">
+        <!-- This form will filter using controller passing params[:search] -->
+        <form action="/books" accept-charset="UTF-8" method="get" class="navbar-form navbar-left" role="search">
           <div class="form-group">
-            <input type="text" class="form-control input-sm" placeholder="Search Books">
-          </div>
+            <input name="utf8" type="hidden" value="✓">
+            <input type="text" name="search" id="search" class="form-control input-sm" placeholder="Search Books">
             <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+          </div>
         </form>
-
+        
         <ul class="nav navbar-nav navbar-right">
           <li><a href="/users/<%= current_user.id %>"><img src=<%= current_user.picture_url %> alt="" height="20" width="20"> <%= current_user.first_name %></a></li>
           <li><a href="/books/"><span class="glyphicon glyphicon-globe"></span> Books</a></li>
@@ -64,9 +65,11 @@
 
 <%= yield %>
 
-<footer class="footer">
-  <p>facebook inspiration </p>
-</footer>
+<% if user_signed_in? == false %>
+  <footer class="footer">
+    <p>facebook inspiration </p>
+  </footer>
+<% end %>
 
 </body>
 </html>
