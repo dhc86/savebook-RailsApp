@@ -13,7 +13,7 @@
     <div class="profile-pic-container">
     <!-- Displays profile images depending if uploaded images or not -->
       <% if Imageprofile.where(user_id: @user.id )[0] != nil && Imageprofile.where(user_id: @user.id )[0].profile_image != nil %>
-      <div class="profile-image-paperclip">
+      <div class="profile-image-paperclip" data-toggle="modal" data-target="#myModal">
         <%= image_tag @imageprofile.profile_image %>
         <div class="profile-name">
           <h2><%= @user.first_name %> <%= @user.last_name %></h2>
@@ -49,7 +49,12 @@
               <div class="modal-body">
                 <div class="col-lg-12">
                   <div class="col-lg-7 picture-profile-modal">
-                    <img src=<%= @user.picture_url %> alt="" height="535" width="490">
+
+                    <% if Imageprofile.where(user_id: @user.id )[0] != nil && Imageprofile.where(user_id: @user.id )[0].profile_image != nil %>
+                      <%= image_tag @imageprofile.profile_image %>
+                    <% else %>
+                      <img src=<%= @user.picture_url %> alt="" height="535" width="490">
+                    <% end %>
                   </div>
                   <div class="col-lg-4 modal-display-info"  style="background: white;">
                     <h3><%= @user.first_name %> <%= @user.last_name %> </h3>
