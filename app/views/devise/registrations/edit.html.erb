@@ -3,68 +3,41 @@
   <h2>Edit <%= resource_name.to_s.humanize %> Settings</h2>
 
   <div class="col-lg-12">
-  
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= devise_error_messages! %>
 
+    
       <div class="col-lg-4 small-containers">
         <h3>Basic Setting:</h3>
-        <div class="field">
-          <%= f.label :first_name %><br />
-          <%= f.text_field :first_name, autofocus: true %>
-        </div>
-
-        <div class="field">
-          <%= f.label :last_name %><br />
-          <%= f.text_field :last_name, autofocus: true %>
-        </div>
-
-        <div class="field">
-          <%= f.label :about %><br />
-          <%= f.text_area :about, autofocus: true %>
-        </div>
-
-        <div class="field">
-          <%= f.label :address %><br />
-          <%= f.text_field :address, autofocus: true %>
+          <%= f.input :first_name, required: true, autofocus: true %>
+          <%= f.input :last_name, required: true, autofocus: true %>
+          <%= f.input :about, required: true, autofocus: true %>
+          <%= f.input :address, required: true, autofocus: true %>
           <p>Note: This info is require to locate books in your area.</p>
+          <div class="actions">
+          <input type="submit" name="commit" value="Update">
         </div>
       </div>
 
 
-      
-    <div class="col-lg-4 small-containers">
-      <h3>Email Settings</h3>  
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true %>
-      </div>
+      <div class="col-lg-4 small-containers">
+        <h3>Email Settings</h3>  
+        <%= f.input :email, required: true, autofocus: true %>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+        <i>(Password and Confirmation password leave blank if you don't want to change it)</i>
+        <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+        <%= f.input :password_confirmation, required: true %>
+        <i>(We need your current password to confirm your changes)</i>
+        <%= f.input :current_password, required: true %>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
-
-      <div class="field">
-        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-        <%= f.password_field :password, autocomplete: "off" %>
+        <div class="actions">
+          <input type="submit" name="commit" value="Update">
+        </div>
       </div>
-
-      <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-        <%= f.password_field :current_password, autocomplete: "off" %>
-      </div>
-      <div class="actions">
-        <%= f.submit "Update" %>
-      </div>
-    </div>
     <% end %>
-
-     
 
     <div class="col-lg-4 small-containers">
       <h3>Images Uploads:</h3>
@@ -75,6 +48,11 @@
       <h3>Cancel my account</h3>
       <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
     </div>
+
+
+
+
+
 
 
   </div>
