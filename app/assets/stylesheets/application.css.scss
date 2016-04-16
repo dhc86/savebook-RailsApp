@@ -288,3 +288,62 @@ input[type="button"], input[type="reset"], input[type="submit"] {
 .wall-picture-container {
   margin-left: 32px;
 }
+
+/* profile image paperclip and wall image paperclip*/
+.wall-image-paperclip img {
+  height: 410px;
+  width: 1075px;
+}
+
+.profile-image-paperclip img {
+  height: 220px;
+  width: 210px;
+}
+
+.image-example-new-image {
+  text-align: center; 
+}
+
+.small-profile-image-paperclip-home-page img{
+    height: 20px;
+    width: 20px;
+}
+
+.medium-profile-image-paperclip-home-page img {
+  height: 50px;
+  width: 45px;
+}
+
+.profile-image-paperclip-book-page img {
+  height: 50px;
+  width: 45px;
+}
+
+/* show book page conatainer */
+.show-book-background {
+  background: #171717;
+}
+
+
+/* reviews facebook style*/
+#reviews-container {
+  background: #F6F7F8;
+}
+
+#landing-page-sign-up {
+  height: 680px;
+}
+
+.sing-up-button input {
+  margin-top: 100px;
+}
+.sing-in-form-button {
+  margin-top: 22px;
+}
+
+.footer-messages {
+  padding-top: 40px;
+}
+
+
+

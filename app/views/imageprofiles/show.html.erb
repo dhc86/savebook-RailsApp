@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @imageprofile.user_id %>
+  <%= image_tag @imageprofile.profile_image %>
+  <%= image_tag @imageprofile.wall_image %>
+</p>
+
+<%= link_to 'Edit', edit_imageprofile_path(@imageprofile) %> |
+<%= link_to 'Back', imageprofiles_path %>

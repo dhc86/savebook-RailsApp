@@ -1,0 +1,37 @@
+<%= simple_form_for(@imageprofile) do |f| %>
+  <%= f.error_notification %>
+  
+  <div class="container" id="upload-images">
+    <div class="col-lg-12">
+
+      <div class="col-lg-6 small-containers image-example-new-image">
+        <div class="form-input">
+          <h3>Profile Image</h3>
+          <p>Size: adjusted to 220x210</p>
+          <%= f.file_field :profile_image%>
+          <br>
+          <div class="small-containers">
+            <p>Example:</p>
+            <img src="/assets/pictureprofilexample.jpg" alt="" height="220" width="210">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 small-containers image-example-new-image">
+        <div class="form-input">
+          <h3>Wall Image</h3>
+          <p>Size: adjusted to 410x1075</p>
+          <%= f.file_field :wall_image%>
+          <br>
+          <div class="small-containers">
+            <p>Example (not to scale):</p>
+            <img src="/assets/wallpicturexample.jpg" alt="" height="220" width="450">
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-actions image-example-new-image">
+        <%= f.button :submit %>
+      </div>
+    </div>
+  </div>
+<% end %>

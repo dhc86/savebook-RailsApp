@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'initial#index'
 
   devise_for :users
+  resources :imageprofiles
   resources :books do 
     resources :reviews
     resources :requests

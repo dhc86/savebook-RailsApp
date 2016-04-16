@@ -29,12 +29,22 @@
         </form>
         
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/users/<%= current_user.id %>"><img src=<%= current_user.picture_url %> alt="" height="20" width="20"> <%= current_user.first_name %></a></li>
+
+
+          <li><a href="/users/<%= current_user.id %>">
+          <% if Imageprofile.where(user_id: current_user.id )[0] != nil && Imageprofile.where(user_id: current_user.id )[0].profile_image != nil %>
+            <div class="small-profile-image-paperclip-home-page">
+              <%= image_tag @current_user_imageprofile.profile_image %> <%= current_user.first_name %>
+             </div>
+            <% else %>
+              <img src=<%= current_user.picture_url %> alt="" height="20" width="20"> <%= current_user.first_name %></a></li>
+            <% end %>
           <li><a href="/books/"><span class="glyphicon glyphicon-globe"></span> Books</a></li>
           <li><a href="/books/new"><span class="glyphicon glyphicon-book"></span> Post A Book</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
             <ul class="dropdown-menu">
+              <li><%= link_to "Upload Images", new_imageprofile_path %></li>
               <li><%= link_to "Settings", edit_user_registration_path %></li>
               <li><%= link_to "Sing Out", destroy_user_session_path,  :method  => 'delete'%></li>
             </ul>
@@ -64,12 +74,22 @@
 <% end %>
 
 <%= yield %>
-
-<% if user_signed_in? == false %>
-  <footer class="footer">
-    <p>facebook inspiration </p>
-  </footer>
-<% end %>
-
+  <% if user_signed_in? == false %>
+    <footer class="footer">
+      
+      <div class="col-lg-12">
+        <div class="col-lg-4 footer-messages">
+          <p>This application was inspired on <a href="https://www.facebook.com/"><b style="color: #415E9B;">Facebook</b></a></p>
+        </div>
+        <div class="col-lg-4 footer-messages">
+         <p>Developer information: <a href="https://www.visualcv.com/0jngv7bpx7y?access=7j7V7H7FD46"><b style="color: #415E9B;">VISUAL-CV</b></a></p>
+        </div>
+        <div class="col-lg-4 footer-messages">
+          <p>Other Applications: <a href="https://trailix.herokuapp.com/"><b style="color: #415E9B;">Trailix</b></a>, <a href="http://mymusic-dhc.herokuapp.com/"><b style="color: #415E9B;">Mymusic</b></a>, <a href="http://www.soloshoppers.ca/"><b style="color: #415E9B;">Soloshoppers</b></a> </p>
+        </div>
+        </div>
+      
+    </footer>
+  <% end %>
 </body>
 </html>

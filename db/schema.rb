@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414215251) do
+ActiveRecord::Schema.define(version: 20160415195212) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
@@ -22,6 +22,20 @@ ActiveRecord::Schema.define(version: 20160414215251) do
     t.datetime "updated_at",                                             null: false
     t.integer  "user_id"
     t.string   "picture_url", default: "http://i.imgur.com/Ibd6JdC.jpg"
+  end
+
+  create_table "imageprofiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "profile_image_file_name"
+    t.string   "profile_image_content_type"
+    t.integer  "profile_image_file_size"
+    t.datetime "profile_image_updated_at"
+    t.string   "wall_image_file_name"
+    t.string   "wall_image_content_type"
+    t.integer  "wall_image_file_size"
+    t.datetime "wall_image_updated_at"
   end
 
   create_table "lends", force: :cascade do |t|

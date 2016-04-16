@@ -1,7 +1,14 @@
 <!-- @book -thanks to find book with params(:book_id)  and create review. possible by the associations -->
 <%= simple_form_for([@book, @book.reviews.build]) do |f| %>
-  <%= f.input :raiting %>  
-  <%= f.input :comment %>
-  <%= f.button :submit %>
+  <div class="form-group text optional review_comment">
+    <textarea class="text optional form-control" name="review[comment]" id="review_comment"></textarea>
+    <input type="image" class="like-button" alt="Submit Form" name="commit"  src="/assets/comment2.png" value="Create Review" placeholder="Write a comment..." height="25" width="25">
+  </div>
+  
 <% end %>
 
+<!-- <input type="image" class="like-button" name="commit" src="/assets/like.png" alt="Submit Form" height="15" width="15"/>       -->   
+
+
+
+    

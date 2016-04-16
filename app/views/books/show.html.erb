@@ -1,11 +1,22 @@
+<div class="show-book-background">
 <p id="notice"><%= notice %></p>
-
 <div class="container">
-    
-      <h4><img src=<%= @users.find(@book.user_id).picture_url %> alt="" height="50" width="45"> <a href="/users/<%= @users.find(@book.user_id).id %>" style="color: #3b5998;"><b><%= @users.find(@book.user_id).first_name %> <%= @users.find(@book.user_id).last_name %></b></a> owns this book</h4>
+  
     
   <div class="col-lg-12 small-containers">
     <div class="col-lg-3 small-containers">
+      <h4>
+        <!-- Find image in databese depending on uploaded or default! -->
+        <% if Imageprofile.where(user_id: @book.user_id )[0] != nil && Imageprofile.where(user_id: @book.user_id )[0].profile_image != nil %>
+          <div class="profile-image-paperclip-book-page">
+            <%= image_tag Imageprofile.where(user_id: @book.user_id)[0].profile_image %><a href="/users/<%= @users.find(@book.user_id).id %>" style="color: #3b5998;"><b> <%= @users.find(@book.user_id).first_name %> <%= @users.find(@book.user_id).last_name %></b></a> owner.
+          </div>
+        <% else %>
+          <img src=<%= @users.find(@book.user_id).picture_url %> alt="" height="50" width="45"><a href="/users/<%= @users.find(@book.user_id).id %>" style="color: #3b5998;"><b> <%= @users.find(@book.user_id).first_name %> <%= @users.find(@book.user_id).last_name %></b></a> owner.
+        <% end %>
+      </h4>
+
+
       <h1>Title: <%= @book.title %></h1>
       <h3>Author: <%= @book.author %></h3>
       <h4>Status: Available</h4>
@@ -25,8 +36,6 @@
         <iframe id = "map" style="height: 300px; width: 420px" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyCVt89sOKkehU7JDQpPncShX80rzGE6kj4&origin=<%= current_user.address %>&destination= <%= @book.user.address %> &avoid=tolls|highways"></iframe>
       </div>
       
-
-       
       <% if current_user.id == @book.user_id %>
         <%= link_to 'Edit', edit_book_path(@book) %> |
         <%= link_to 'Back', books_path %>
@@ -67,14 +76,14 @@
         <% end %>
         <!-- END - This displays book status and like button -->
         <br>
-        <h3>Have read the book? Let people know your opinion.</h3>
+        <h4>Have read the book? Let people know your opinion.</h4>
         <%= render './reviews/form' %>
-        <h3>Latest reviews:</h3>
-        <%= render @book.reviews %>
+        <%= render @book.reviews%>
       </div>  
 
     </div>
 
   </div>
   
+</div>
 </div>

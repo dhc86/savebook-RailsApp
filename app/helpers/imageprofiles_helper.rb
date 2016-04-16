@@ -1,0 +1,2 @@
+module ImageprofilesHelper
+end

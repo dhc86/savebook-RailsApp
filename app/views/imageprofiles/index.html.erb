@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Imageprofiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @imageprofiles.each do |imageprofile| %>
+      <tr>
+        <td><%= imageprofile.user_id %></td>
+        <td><%= link_to 'Show', imageprofile %></td>
+        <td><%= link_to 'Edit', edit_imageprofile_path(imageprofile) %></td>
+        <td><%= link_to 'Destroy', imageprofile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Imageprofile', new_imageprofile_path %>

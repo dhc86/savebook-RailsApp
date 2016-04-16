@@ -10,21 +10,26 @@ class BooksController < ApplicationController
     end
     @users = User.all
     @requests = Request.all
+    @imageprofile = Imageprofile.all
+    @current_user_imageprofile = Imageprofile.where(user_id: current_user.id )[0]
   end
 
   # GET /books/1
   # GET /books/1.json
   def show
     @users = User.all
+    @current_user_imageprofile = Imageprofile.where(user_id: current_user.id )[0]
   end
 
   # GET /books/new
   def new
     @book = current_user.books.build
+    @current_user_imageprofile = Imageprofile.where(user_id: current_user.id )[0]
   end
 
   # GET /books/1/edit
   def edit
+    @current_user_imageprofile = Imageprofile.where(user_id: current_user.id )[0]
   end
 
   # POST /books
