@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Savebook</title>
+  <% if user_signed_in? %>
+    <title><%= current_user.first_name %> <%= current_user.last_name %></title>
+  <% else %>
+    <title>Savebook</title>
+  <% end %>
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -36,15 +40,25 @@
             <div class="small-profile-image-paperclip-home-page">
               <%= image_tag @current_user_imageprofile.profile_image %> <%= current_user.first_name %>
              </div>
-            <% else %>
-              <img src=<%= current_user.picture_url %> alt="" height="20" width="20"> <%= current_user.first_name %></a></li>
-            <% end %>
+          <% else %>
+            <img src=<%= current_user.picture_url %> alt="" height="20" width="20"> <%= current_user.first_name %></a></li>
+          <% end %>
           <li><a href="/books/"><span class="glyphicon glyphicon-globe"></span> Books</a></li>
           <li><a href="/books/new"><span class="glyphicon glyphicon-book"></span> Post A Book</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
             <ul class="dropdown-menu">
+
+            <% if Imageprofile.where(user_id: current_user.id )[0] != nil && Imageprofile.where(user_id: current_user.id )[0].profile_image != nil %>
+
+              
+              <li><%= link_to 'Edit Images', edit_imageprofile_path(Imageprofile.where(user_id: current_user.id )[0]) %></li>
+          <% else %>
               <li><%= link_to "Upload Images", new_imageprofile_path %></li>
+          <% end %>
+
+
+
               <li><%= link_to "Settings", edit_user_registration_path %></li>
               <li><%= link_to "Sing Out", destroy_user_session_path,  :method  => 'delete'%></li>
             </ul>
