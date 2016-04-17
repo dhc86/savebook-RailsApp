@@ -7,7 +7,7 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'angularjs-rails', '~> 1.5'
 gem 'jquery-turbolinks'
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
-
+gem 'aws-sdk', '< 2.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
