@@ -89,10 +89,10 @@
 
 <%= yield %>
 
-<footer class="footer">
-  <% if user_signed_in? == false %>
+<div class="col-lg-12">
+  <footer class="footer">
+    <% if user_signed_in? == false %>
       
-      <div class="col-lg-12">
         <div class="col-lg-4 footer-messages">
           <p>This application was inspired on <a href="https://www.facebook.com/"><b style="color: #415E9B;">Facebook</b></a></p>
         </div>
@@ -102,9 +102,9 @@
         <div class="col-lg-4 footer-messages">
           <p>Other Applications: <a href="https://trailix.herokuapp.com/"><b style="color: #415E9B;">Trailix</b></a>, <a href="http://mymusic-dhc.herokuapp.com/"><b style="color: #415E9B;">Mymusic</b></a>, <a href="http://www.soloshoppers.ca/"><b style="color: #415E9B;">Soloshoppers</b></a> </p>
         </div>
-        </div>
       
-  <% end %>
-</footer>
+    <% end %>
+  </footer>
+</div>
 </body>
 </html>
