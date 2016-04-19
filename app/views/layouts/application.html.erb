@@ -88,8 +88,9 @@
 <% end %>
 
 <%= yield %>
+
+<footer class="footer">
   <% if user_signed_in? == false %>
-    <footer class="footer">
       
       <div class="col-lg-12">
         <div class="col-lg-4 footer-messages">
@@ -103,7 +104,7 @@
         </div>
         </div>
       
-    </footer>
   <% end %>
+</footer>
 </body>
 </html>

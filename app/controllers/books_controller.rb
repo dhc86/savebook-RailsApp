@@ -29,7 +29,11 @@ class BooksController < ApplicationController
 
   # GET /books/1/edit
   def edit
-    @current_user_imageprofile = Imageprofile.where(user_id: current_user.id )[0]
+    if @book.user_id == current_user.id
+      @current_user_imageprofile = Imageprofile.where(user_id: current_user.id )[0]
+    else 
+      redirect_to books_path
+    end 
   end
 
   # POST /books
