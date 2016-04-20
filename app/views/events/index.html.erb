@@ -144,18 +144,18 @@
                     <a href="/books/<%= event.book_id %>" style=" font-size: 18px; font-family: inherit; color: #3b5998; font-weight: bold;">
                       <b><%= Book.where(id: event.book_id)[0].title %></b>
                     </a>
+                    <span style="font-size: 11px"> <%= event.created_at.strftime("%d %b. %Y") %></span>        
                   </h4>
 
                   <div class="col-lg-2 small-containers">
-                    <a href='/books/<%= event.book_id %>'><img src=<%= Book.where(id: event.book_id)[0].picture_url %> alt="" height="70" width="64"></a>
+                    <a href='/books/<%= event.book_id %>'><img src=<%= Book.where(id: event.book_id)[0].picture_url %> alt="" height="77" width="64"></a>
                   </div>
-                  <div class="col-lg-7">
+                  <div class="col-lg-10 small-containers" id="reviews-container">
                     <br>
                     <p>From:
                     <a href="/users/<%= @users.find(event.user_id).id %>" style=" font-size: 18px; font-family: inherit; color: #3b5998; font-weight: bold;">
                     <%= User.where(id: Request.where(id: event.request_id)[0].owner_id)[0].first_name %> <%= User.where(id: Request.where(id: event.request_id)[0].owner_id)[0].last_name %></a>'s list.</p>
                     <p>Good luck in your request!</p>
-                    <span style="font-size: 11px"> <%= event.created_at.strftime("%d %b. %Y") %></span>                    
                   </div>
                 </div>
               </div>
@@ -190,20 +190,20 @@
                     <a href="/books/<%= event.book_id %>" style=" font-size: 18px; font-family: inherit; color: #3b5998; font-weight: bold;">
                       <b><%= Book.where(id: event.book_id)[0].title %></b>
                     </a>
-       
+                    <span style="font-size: 11px"> <%= event.created_at.strftime("%d %b. %Y") %></span>
                   </h4>
 
 
                   <div class="col-lg-2 small-containers">
-                    <a href='/books/<%= event.book_id %>'><img src=<%= Book.where(id: event.book_id)[0].picture_url %> alt="" height="70" width="64"></a>
+                    <a href='/books/<%= event.book_id %>'><img src=<%= Book.where(id: event.book_id)[0].picture_url %> alt="" height="77" width="64"></a>
                   </div>
-                  <div class="col-lg-7">
+                  <div class="col-lg-10 small-containers" id="reviews-container">
                     <br>
                     <p>To: 
                     <a href="/users/<%= @users.find(event.user_id).id %>" style=" font-size: 18px; font-family: inherit; color: #3b5998; font-weight: bold;">
                     <%= User.where(id: Lend.where(id: event.lend_id)[0].borrower_id)[0].first_name %> <%= User.where(id: Lend.where(id: event.lend_id)[0].borrower_id)[0].last_name %></a></p>
                     <p>Congrats!</p>
-                    <span style="font-size: 11px"> <%= event.created_at.strftime("%d %b. %Y") %></span>
+                    
                   </div>
                 </div>
               </div>
