@@ -2,7 +2,7 @@ class InitialController < ApplicationController
  
   def index
     if user_signed_in?
-      redirect_to books_path
+      redirect_to events_index_path
     else
       redirect_to new_user_registration_path
     end
