@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  book: false
+  book_id: 1
+  request: false
+  request_id: 1
+  lend: false
+  lend_id: 1
+  review: false
+  review_id: 1
+  like: false
+  like: 
+
+two:
+  book: false
+  book_id: 1
+  request: false
+  request_id: 1
+  lend: false
+  lend_id: 1
+  review: false
+  review_id: 1
+  like: false
+  like: 
