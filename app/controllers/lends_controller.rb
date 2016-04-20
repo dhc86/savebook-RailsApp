@@ -16,6 +16,12 @@ class LendsController < ApplicationController
     @lend.due = Date.today + 7
     @lend.check_out = Date.today
     if @lend.save
+      @event = Event.new
+      @event.book_id = @book.id
+      @event.user_id = current_user.id
+      @event.lend = true
+      @event.lend_id = @lend.id
+      @event.save
       update_request
       redirect_to user_path(current_user)
     else

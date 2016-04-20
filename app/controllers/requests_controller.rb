@@ -11,6 +11,12 @@ class RequestsController < ApplicationController
     @request.borrower_id = current_user.id 
     @request.owner_id = @book.user_id
     if @request.save
+      @event = Event.new
+      @event.book_id = @book.id
+      @event.user_id = current_user.id
+      @event.request = true
+      @event.request_id = @request.id
+      @event.save
       redirect_to book_path(@book)
     else
       render 'new'

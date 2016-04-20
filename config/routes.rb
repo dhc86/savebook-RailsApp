@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
+
   root 'initial#index'
+  get 'events/index'
 
   devise_for :users
   resources :imageprofiles
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
     resources :requests
     resources :lends
     resources :likes
+    
   end 
   resources :users
   # root 'books#index'

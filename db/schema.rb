@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160415195212) do
+ActiveRecord::Schema.define(version: 20160420072145) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
@@ -22,6 +22,22 @@ ActiveRecord::Schema.define(version: 20160415195212) do
     t.datetime "updated_at",                                             null: false
     t.integer  "user_id"
     t.string   "picture_url", default: "http://i.imgur.com/Ibd6JdC.jpg"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.boolean  "book",       default: false
+    t.integer  "book_id"
+    t.boolean  "request",    default: false
+    t.integer  "request_id"
+    t.boolean  "lend",       default: false
+    t.integer  "lend_id"
+    t.boolean  "review",     default: false
+    t.integer  "review_id"
+    t.boolean  "like",       default: false
+    t.integer  "like_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "imageprofiles", force: :cascade do |t|

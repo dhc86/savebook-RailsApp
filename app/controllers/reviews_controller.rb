@@ -12,6 +12,12 @@ class ReviewsController < ApplicationController
     @review.user_name = current_user.first_name
     @review.user_picture_url = current_user.picture_url
     if @review.save
+      @event = Event.new
+      @event.book_id = @book.id
+      @event.user_id = current_user.id
+      @event.review = true
+      @event.review_id = @review.id
+      @event.save
       redirect_to book_path(@book)
     else
       render 'new'

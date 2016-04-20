@@ -43,7 +43,7 @@
           <% else %>
             <img src=<%= current_user.picture_url %> alt="" height="20" width="20"> <%= current_user.first_name %></a></li>
           <% end %> 
-          <li><a href="/books/"><span class=""></span> Home</a></li>
+          <li><%=link_to "Home", events_index_path %></li>
           <li><a href="/books/"><span class="glyphicon glyphicon-globe"></span> Books</a></li>
           <li><a href="/books/new"><span class="glyphicon glyphicon-book"></span> Post A Book</a></li>
           <li class="dropdown">
@@ -91,8 +91,8 @@
 <%= yield %>
 
 <div class="col-lg-12">
-  <footer class="footer">
     <% if user_signed_in? == false %>
+      <footer class="footer">
       
         <div class="col-lg-4 footer-messages">
           <p>This application was inspired on <a href="https://www.facebook.com/"><b style="color: #415E9B;">Facebook</b></a></p>
@@ -104,8 +104,8 @@
           <p>Other Applications: <a href="https://trailix.herokuapp.com/"><b style="color: #415E9B;">Trailix</b></a>, <a href="http://mymusic-dhc.herokuapp.com/"><b style="color: #415E9B;">Mymusic</b></a>, <a href="http://www.soloshoppers.ca/"><b style="color: #415E9B;">Soloshoppers</b></a> </p>
         </div>
       
+      </footer>
     <% end %>
-  </footer>
 </div>
 </body>
 </html>
