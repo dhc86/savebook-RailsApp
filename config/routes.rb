@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'initial#index'
   get 'events/index'
 
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
     resources :requests
     resources :lends
     resources :likes
-    
   end 
+    
   resources :users
 end
