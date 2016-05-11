@@ -10,6 +10,10 @@ gem 'paperclip', '~> 4.3', '>= 4.3.6'
 gem 'aws-sdk', '< 2.0'
 gem 'rails_admin'
 
+# savebook chat-gems
+gem 'private_pub'
+gem 'thin'
+
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
