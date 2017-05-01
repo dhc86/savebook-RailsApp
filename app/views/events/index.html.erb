@@ -58,7 +58,7 @@
                   <b><%= book.title %></b>
                 </a><span style="font-size: 11px"> <%= event.created_at.strftime("%d %b. %Y") %></span>
               </h4>
-              <div class="col-lg-3 small-containers">
+              <div class="col-lg-3 small-containers book-image-container">
                 <a href='/books/<%= book.id %>'><img src=<%= book.picture_url %> alt="" height="150" width="108"></a>
               </div>
               <div class="col-lg-7">
@@ -258,7 +258,7 @@
       <% end %>
     </div>
 
-    <div class="col-lg-3">
+    <div class="col-lg-3 advertisement">
       <div class="small-containers">
         <h5>MUSIC</h5>
         <a href="http://mymusic-dhc.herokuapp.com/"><h4><img src="/assets/mymusic.png" alt="" height="25" width="25"> Mymusic App</h4></a>
@@ -281,7 +281,7 @@
       <div class="small-containers">
         <h5>DEVELOPER</h5>
         <a href="https://www.visualcv.com/0jngv7bpx7y?access=7j7V7H7FD46"><p><img src="/assets/visualcv.png" alt="" height="20"></p></a>
-        <p>DIego Herrera: Automation engineer with a passion for web application technologies. </p>
+        <p>Diego Herrera: Web developer with experience building amazing applications.</p>
       </div>
       <div class="small-containers">
         <a href="https://github.com/dhc86"><h5><img src="/assets/githublogo.jpg" alt="" height="25" width="25"> Github</h5></a>

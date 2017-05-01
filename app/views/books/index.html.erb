@@ -42,15 +42,15 @@
             <div class="media-left media-top">
               <a href="/users/<%= @users.find(book.user_id).id %>">
 
-
-              <% if Imageprofile.where(user_id: book.user_id )[0] != nil && Imageprofile.where(user_id: book.user_id )[0].profile_image != nil %>
-                <div class="medium-profile-image-paperclip-home-page">
-                  <p><%= image_tag Imageprofile.where(user_id: book.user_id)[0].profile_image %> </p>
-                </div>
-              <% else %>
-                <img class="media-object" src=<%= @users.find(book.user_id).picture_url %> alt="..." height="50" width="45"> 
-              <% end %>
-
+              
+                <% if Imageprofile.where(user_id: book.user_id )[0] != nil && Imageprofile.where(user_id: book.user_id )[0].profile_image != nil %>  
+                    <div class="medium-profile-image-paperclip-home-page">
+                      <p><%= image_tag Imageprofile.where(user_id: book.user_id)[0].profile_image %> </p>
+                    </div>
+                <% else %>
+                  <img class="media-object" src=<%= @users.find(book.user_id).picture_url %> alt="..." height="50" width="45"> 
+                <% end %>
+              
               </a>
             </div>
             <div class="media-body small-containers">
@@ -66,7 +66,7 @@
               </a>
             </h4>
 
-            <div class="col-lg-3 small-containers">
+            <div class="col-lg-3 small-containers book-image-container">
               <a href='/books/<%= book.id %>'><img src=<%= book.picture_url %> alt="" height="150" width="108"></a>
             </div>
             <div class="col-lg-7">
@@ -127,7 +127,7 @@
         <% end %>
       </div>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-3 advertisement">
       <div class="small-containers">
         <h5>MUSIC</h5>
         <a href="http://mymusic-dhc.herokuapp.com/"><h4><img src="/assets/mymusic.png" alt="" height="25" width="25"> Mymusic App</h4></a>
@@ -150,7 +150,7 @@
       <div class="small-containers">
         <h5>DEVELOPER</h5>
         <a href="https://www.visualcv.com/0jngv7bpx7y?access=7j7V7H7FD46"><p><img src="/assets/visualcv.png" alt="" height="20"></p></a>
-        <p>DIego Herrera: Automation engineer with a passion for web application technologies. </p>
+        <p>Diego Herrera: Web developer with experience building amazing applications.</p>
       </div>
       <div class="small-containers">
         <a href="https://github.com/dhc86"><h5><img src="/assets/githublogo.jpg" alt="" height="25" width="25"> Github</h5></a>

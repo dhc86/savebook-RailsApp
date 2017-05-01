@@ -16,68 +16,68 @@
 <% if user_signed_in? %>
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header small-logo-navbar">
-        <a href="/books"><img src="/assets/logo10.png" alt="" height="28" width="28"></a>
-      </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <!-- This form will filter using controller passing params[:search] -->
-        <form action="/books" accept-charset="UTF-8" method="get" class="navbar-form navbar-left" role="search">
-          <div class="form-group" id="navbar-form-filter">
-            <input name="utf8" type="hidden" value="✓">
-            <input type="text" name="search" id="search" class="form-control input-sm" placeholder="Search Books">
-            <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+        <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header small-logo-navbar">
+            <a href="/books"><img src="/assets/logo10.png" alt="" height="28" width="28"></a>
           </div>
-        </form>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <!-- This form will filter using controller passing params[:search] -->
+            <form action="/books" accept-charset="UTF-8" method="get" class="navbar-form navbar-left" role="search">
+              <div class="form-group" id="navbar-form-filter">
+                <input name="utf8" type="hidden" value="✓">
+                <input type="text" name="search" id="search" class="form-control input-sm" placeholder="Search Books">
+                <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+              </div>
+            </form>
         
         <ul class="nav navbar-nav navbar-right">
 
 
-          <li><a href="/users/<%= current_user.id %>">
-          <% if Imageprofile.where(user_id: current_user.id )[0] != nil && Imageprofile.where(user_id: current_user.id )[0].profile_image != nil %>
-            <div class="small-profile-image-paperclip-home-page">
-              <%= image_tag @current_user_imageprofile.profile_image %> <%= current_user.first_name %>
-             </div>
-          <% else %>
-            <img src=<%= current_user.picture_url %> alt="" height="20" width="20"> <%= current_user.first_name %></a></li>
-          <% end %> 
-          <li><%=link_to "Home", events_index_path %></li>
-          <li id="style-navbar-icons"><a href="/books/">
-          
-          <img src="/assets/books2.png" alt="" height="23" width="28"></a></li>
-
-          <!-- messages system modal  -->
-          <li id="style-navbar-icons" data-toggle="modal" data-target="#myModal"><a href="#">
-          <img src="/assets/messages.png" alt="" height="23" width="24"><span class="badge" style="background: red;">3</span></a></li>
-
-
-          <li id="style-navbar-icons"><a href="/books/new"><img src="/assets/addbook.png" alt="" height="23" width="26"> </a></li> 
-
-          <% if current_user.admin == true %>
-            <li><%=link_to "Admin", rails_admin_path %></li>
-          <% end %>
-
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
-            <ul class="dropdown-menu">
-
-            <% if Imageprofile.where(user_id: current_user.id )[0] != nil && Imageprofile.where(user_id: current_user.id )[0].profile_image != nil %>
-
+              <li><a href="/users/<%= current_user.id %>">
+              <% if Imageprofile.where(user_id: current_user.id )[0] != nil && Imageprofile.where(user_id: current_user.id )[0].profile_image != nil %>
+                <div class="small-profile-image-paperclip-home-page">
+                  <%= image_tag @current_user_imageprofile.profile_image %> <%= current_user.first_name %>
+                </div>
+              <% else %>
+                <img src=<%= current_user.picture_url %> alt="" height="20" width="20"> <%= current_user.first_name %></a></li>
+              <% end %> 
+              <li><%=link_to "Home", events_index_path %></li>
+              <li id="style-navbar-icons"><a href="/books/">
               
-              <li><%= link_to 'Edit Images', edit_imageprofile_path(Imageprofile.where(user_id: current_user.id )[0]) %></li>
-          <% else %>
-              <li><%= link_to "Upload Images", new_imageprofile_path %></li>
-          <% end %>
+              <img src="/assets/books2.png" alt="" height="23" width="28"></a></li>
+
+              <!-- messages system modal  -->
+              <li id="style-navbar-icons" data-toggle="modal" data-target="#myModal"><a href="#">
+              <img src="/assets/messages.png" alt="" height="23" width="24"><span class="badge" style="background: red;">3</span></a></li>
+
+
+              <li id="style-navbar-icons"><a href="/books/new"><img src="/assets/addbook.png" alt="" height="23" width="26"> </a></li> 
+
+              <% if current_user.admin == true %>
+                <li><%=link_to "Admin", rails_admin_path %></li>
+              <% end %>
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+
+                <% if Imageprofile.where(user_id: current_user.id )[0] != nil && Imageprofile.where(user_id: current_user.id )[0].profile_image != nil %>
+
+                  
+                  <li><%= link_to 'Edit Images', edit_imageprofile_path(Imageprofile.where(user_id: current_user.id )[0]) %></li>
+              <% else %>
+                  <li><%= link_to "Upload Images", new_imageprofile_path %></li>
+              <% end %>
 
 
 
-              <li><%= link_to "Settings", edit_user_registration_path %></li>
-              <li><%= link_to "Sing Out", destroy_user_session_path,  :method  => 'delete'%></li>
-            </ul>
-          </li>
-        </ul>
+                  <li><%= link_to "Settings", edit_user_registration_path %></li>
+                  <li><%= link_to "Sing Out", destroy_user_session_path,  :method  => 'delete'%></li>
+                </ul>
+              </li>
+          </ul>
       </div><!-- /.navbar-collapse -->
 
     </div><!-- /.container-fluid -->
@@ -95,7 +95,9 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse navbar-right form-sing-in" id="bs-example-navbar-collapse-1">
 
+      <div class="log-in-form">
         <%= render './devise/sessions/form' %>
+      </div>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav> 
@@ -103,20 +105,26 @@
 
 <%= yield %>
 
-<div class="col-lg-12">
+<div class="col-lg-12 footer-container">
     <% if user_signed_in? == false %>
       <footer class="footer">
-      
-        <div class="col-lg-4 footer-messages">
-          <p>This application was inspired on <a href="https://www.facebook.com/"><b style="color: #415E9B;">Facebook</b></a></p>
-        </div>
-        <div class="col-lg-4 footer-messages">
-         <p>Developer information: <a href="https://www.visualcv.com/0jngv7bpx7y?access=7j7V7H7FD46"><b style="color: #415E9B;">VISUAL-CV</b></a></p>
-        </div>
-        <div class="col-lg-4 footer-messages">
-          <p>Other Applications: <a href="https://trailix.herokuapp.com/"><b style="color: #415E9B;">Trailix</b></a>, <a href="http://mymusic-dhc.herokuapp.com/"><b style="color: #415E9B;">Mymusic</b></a>, <a href="http://www.soloshoppers.ca/"><b style="color: #415E9B;">Soloshoppers</b></a> </p>
-        </div>
-      
+      <ul>
+          <li>
+              <div class="col-lg-4 footer-messages">
+                <p>This application was inspired on <a href="https://www.facebook.com/"><b style="color: #415E9B;">Facebook</b></a></p>
+              </div>
+          </li>
+          <li>
+              <div class="col-lg-4 footer-messages">
+              <p>Developer Information: <a href="https://www.visualcv.com/0jngv7bpx7y?access=7j7V7H7FD46"><b style="color: #415E9B;">VISUAL-CV</b></a></p>
+              </div>
+          </li>
+          <li>
+              <div class="col-lg-4 footer-messages">
+                <p>Other Applications: <a href="https://trailix.herokuapp.com/"><b style="color: #415E9B;">Trailix</b></a>, <a href="http://mymusic-dhc.herokuapp.com/"><b style="color: #415E9B;">Mymusic</b></a>, <a href="http://www.soloshoppers.ca/"><b style="color: #415E9B;">Soloshoppers</b></a> </p>
+              </div>      
+          </li>
+      </ul>      
       </footer>
     <% end %>
 </div>
